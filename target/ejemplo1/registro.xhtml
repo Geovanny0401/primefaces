@@ -10,17 +10,31 @@
 </h:head>
 <body>
        <h:form id="registroForm">
-           <p:panel header="Registro Formulario" style="width: 500px;">
+           <p:panel header="Registro Formulario" style="width: 800px;">
                <p:messages/>
-           <h:panelGrid columns="2">
-              <p:outputLabel value="Usuario:"/>
-              <p:inputText id="usuario" value="#{usuarioController.registrarUsuario.usuario}" label="Usuario" />
+           <h:panelGrid columns="3">
+              <p:outputLabel value="Usuario:*"/>
+              <p:inputText id="usuario" value="#{usuarioController.registrarUsuario.usuario}" required="true"
+                           label="Usuario">
+              <p:ajax event="keyup" update="usuarioMsg"/>
+              </p:inputText>
+              <p:messages id="usuarioMsg" for="usuario"/>
 
-              <p:outputLabel value="Clave"/>
-              <p:password id="clave" value="#{usuarioController.registrarUsuario.clave}" label="Clave"/>
+              <p:outputLabel value="Clave:*"/>
+              <p:password id="clave" value="#{usuarioController.registrarUsuario.clave}" required="true"
+                          label="Clave">
+                  <f:validateLength minimum="4"/>
+              <p:ajax event="keyup" update="claveMsg"/>
+              </p:password>
+              <p:messages id="claveMsg" for="clave"/>
+
 
               <p:outputLabel value="Nombre"/>
-              <p:inputText id="nombre" value="#{usuarioController.registrarUsuario.nombre}" label="nombre" />
+              <p:inputText id="nombre" value="#{usuarioController.registrarUsuario.nombre}" required="true"
+                           label="nombre" >
+               <p:ajax event="keyup" update="nombreMsg"/>
+               </p:inputText>
+               <p:messages id="nombreMsg" for="nombre"/>
 
               <p:outputLabel value="Apellido"/>
               <p:inputText id="apellido" value="#{usuarioController.registrarUsuario.apellido}" label="apellido"/>
