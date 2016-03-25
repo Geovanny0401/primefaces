@@ -14,7 +14,26 @@
                <p:messages/>
            <h:panelGrid columns="2">
               <p:outputLabel value="Usuario:"/>
-               <p:inputText id="usuario" value="#{usuarioController.registrarUsuario.usuario}" label="Usuario" />
+              <p:inputText id="usuario" value="#{usuarioController.registrarUsuario.usuario}" label="Usuario" />
+
+              <p:outputLabel value="Clave"/>
+              <p:password id="clave" value="#{usuarioController.registrarUsuario.clave}" label="Clave"/>
+
+              <p:outputLabel value="Nombre"/>
+              <p:inputText id="nombre" value="#{usuarioController.registrarUsuario.nombre}" label="nombre" />
+
+              <p:outputLabel value="Apellido"/>
+              <p:inputText id="apellido" value="#{usuarioController.registrarUsuario.apellido}" label="apellido"/>
+
+              <p:outputLabel value="email"/>
+              <p:inputText id="email" value="#{usuarioController.registrarUsuario.email}" label="email"/>
+
+              <p:outputLabel value="telefono"/>
+              <p:inputText id="telefono" value="#{usuarioController.registrarUsuario.telefono}" label="telefono"/>
+
+              <p:outputLabel value=""/>
+              <p:commandButton action="#{usuarioController.Registrar}" value="Registrar" update="registroForm"/>
+
            </h:panelGrid>
            </p:panel>
        </h:form>

@@ -6,10 +6,19 @@ package com.ejemplo.model;
 public class Usuario {
     private Integer id;
     private String usuario;
+    private String clave;
     private String nombre;
     private String apellido;
     private String email;
     private String telefono;
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 
     public Integer getId() {
         return id;
