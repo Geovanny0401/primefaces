@@ -20,7 +20,9 @@
     </session-config>
 
     <welcome-file-list>
-        <welcome-file>inicio.jsf</welcome-file>
+        <welcome-file>registro.jsf</welcome-file>
     </welcome-file-list>
+
+
 
 </web-app>

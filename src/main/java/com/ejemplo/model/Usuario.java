@@ -12,6 +12,29 @@ public class Usuario {
     private String email;
     private String telefono;
 
+    public Usuario()
+    {
+
+    }
+
+    public Usuario(Integer id, String usuario, String clave, String nombre)
+    {
+        this.id=id;
+        this.usuario=usuario;
+        this.clave=clave;
+        this.nombre=nombre;
+    }
+    public Usuario(Integer id, String usuario, String clave, String nombre, String apellido, String email, String telefono)
+    {
+        this.id=id;
+        this.usuario=usuario;
+        this.clave=clave;
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.email=email;
+        this.telefono=telefono;
+    }
+
     public String getClave() {
         return clave;
     }
