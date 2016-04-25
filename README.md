@@ -1,3 +1,0 @@
-# primefaces
-
-Ejemplo de primeFaces

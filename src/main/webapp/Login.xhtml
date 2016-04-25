@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/masterTemplate.xhtml">
+
+<ui:define name="bodyContent">
+         <h:form id="loginForm">
+             <p:panel header="Control Acceso" style="width: 500px;">
+                 <p:panelGrid columns="2">
+                     <p:outputLabel value="Usuario"/>
+                     <p:inputText id="usuario" value="#{usuarioController.loginUsuario.usuario}"/>
+                     <p:outputLabel value="Clave"/>
+                     <p:password id="clave" value="#{usuarioController.loginUsuario.clave}"/>
+                     <p:commandButton action="#{usuarioController.Login}" value="Ingresar" update="loginEstadoMsg"/>
+                     <p:commandButton type="reset" value="Resert"/>
+                     <p:outputLabel value="#{usuarioController.loginEstado}" id="loginEstadoMsg"/>
+                 </p:panelGrid>
+             </p:panel>
+         </h:form>
+</ui:define>
+</ui:composition>

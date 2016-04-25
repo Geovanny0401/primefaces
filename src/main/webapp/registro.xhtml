@@ -5,96 +5,97 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 <f:view>
-<h:head>
-    <title>Registro Formulario</title>
-    <script type="text/javascript">
-       /* function validateEmail()
-        {
-            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-            var email = $.trim($("#userForm\\:email").val());
-            if(email ==''){
-                $("#userForm\\:emailMsg").text("");
-                $("#userForm\\:emailMsg").attr("class", "");
-                return;
+    <h:head>
+        <title>Registro Formulario</title>
+        <script type="text/javascript">
+            /* function validateEmail()
+             {
+             var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+             var email = $.trim($("#userForm\\:email").val());
+             if(email ==''){
+             $("#userForm\\:emailMsg").text("");
+             $("#userForm\\:emailMsg").attr("class", "");
+             return;
+             }
+             if( emailReg.test( email ) ) {
+             $("#userForm\\:emailMsg").text("Valido Email");
+             $("#userForm\\:emailMsg").attr("class", "ui-messages-info
+             ui-widget ui-corner-all ui-messages-info-summary");
+             } else {
+             $("#userForm\\:emailMsg").text("Invalido Email");
+             $("#userForm\\:emailMsg").attr("class", "ui-message-error
+             ui-widget ui-corner-all ui-message-error-detail");
+             }
+             }*/
+            function validateEmail()
+            {
+                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                var email = $.trim($(PrimeFaces.escapeClientId("registroForm:email")).val());
+                if(email ==''){
+                    $(PrimeFaces.escapeClientId("registroForm:emailMsg")).text("");
+                    $(PrimeFaces.escapeClientId("registroForm:emailMsg")).attr("class", "");
+                    return;
+                }
+                if( emailReg.test( email ) ) {
+                    $(PrimeFaces.escapeClientId("registroForm:emailMsg")).text("Email Validado");
+                    $(PrimeFaces.escapeClientId("registroForm:emailMsg")).attr("class", "ui-messages-info ui-widget ui-corner-all ui-messages-info-summary");
+                } else {
+                    $(PrimeFaces.escapeClientId("registroForm:emailMsg")).text("Email Invalido");
+                    $(PrimeFaces.escapeClientId("registroForm:emailMsg")).attr("class", "ui-message-error ui-widget ui-corner-all ui-message-error-detail");
+                }
             }
-            if( emailReg.test( email ) ) {
-                $("#userForm\\:emailMsg").text("Valido Email");
-                $("#userForm\\:emailMsg").attr("class", "ui-messages-info
-                ui-widget ui-corner-all ui-messages-info-summary");
-            } else {
-                $("#userForm\\:emailMsg").text("Invalido Email");
-                $("#userForm\\:emailMsg").attr("class", "ui-message-error
-                ui-widget ui-corner-all ui-message-error-detail");
-            }
-        }*/
-       function validateEmail()
-       {
-           var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-           var email = $.trim($(PrimeFaces.escapeClientId("registroForm:email")).val());
-           if(email ==''){
-               $(PrimeFaces.escapeClientId("registroForm:emailMsg")).text("");
-               $(PrimeFaces.escapeClientId("registroForm:emailMsg")).attr("class", "");
-               return;
-           }
-           if( emailReg.test( email ) ) {
-               $(PrimeFaces.escapeClientId("registroForm:emailMsg")).text("Email Validado");
-               $(PrimeFaces.escapeClientId("registroForm:emailMsg")).attr("class", "ui-messages-info ui-widget ui-corner-all ui-messages-info-summary");
-           } else {
-               $(PrimeFaces.escapeClientId("registroForm:emailMsg")).text("Email Invalido");
-               $(PrimeFaces.escapeClientId("registroForm:emailMsg")).attr("class", "ui-message-error ui-widget ui-corner-all ui-message-error-detail");
-           }
-       }
-    </script>
-</h:head>
-<body>
-       <h:form id="registroForm">
-           <p:panel header="Registro Formulario" style="width: 800px;">
-               <p:messages/>
-           <h:panelGrid columns="3">
-              <p:outputLabel value="Usuario:"/>
-              <p:inputText id="usuario" value="#{usuarioController.registrarUsuario.usuario}" required="true"
-                           label="Usuario">
-              <p:ajax event="keyup" update="usuarioMsg"/>
-              </p:inputText>
-              <p:messages id="usuarioMsg" for="usuario"/>
+        </script>
+    </h:head>
+    <body>
+    <h:form id="registroForm">
+        <p:panel header="Registro Formulario" style="width: 800px;">
+            <p:messages/>
+            <h:panelGrid columns="3">
+                <p:outputLabel value="Usuario:"/>
+                <p:inputText id="usuario" value="#{usuarioController.registrarUsuario.usuario}" required="true"
+                             label="Usuario">
+                    <p:ajax event="keyup" update="usuarioMsg"/>
+                </p:inputText>
+                <p:messages id="usuarioMsg" for="usuario"/>
 
-              <p:outputLabel value="Clave:"/>
-              <p:password id="clave" value="#{usuarioController.registrarUsuario.clave}" required="true"
-                          label="Clave">
-              <f:validateLength minimum="4"/>
-              <p:ajax event="keyup" update="claveMsg"/>
-              </p:password>
-              <p:messages id="claveMsg" for="clave"/>
+                <p:outputLabel value="Clave:"/>
+                <p:password id="clave" value="#{usuarioController.registrarUsuario.clave}" required="true"
+                            label="Clave">
+                    <f:validateLength minimum="4"/>
+                    <p:ajax event="keyup" update="claveMsg"/>
+                </p:password>
+                <p:messages id="claveMsg" for="clave"/>
 
-               <p:outputLabel value="Email:"/>
-               <p:inputText id="email" value="#{usuarioController.registrarUsuario.email}" required="true"
-                            onchange="validateEmail();" label="email">
-               </p:inputText>
-               <p:messages id="emailMsg" for="email"/>
+                <p:outputLabel value="Email:"/>
+                <p:inputText id="email" value="#{usuarioController.registrarUsuario.email}" required="true"
+                             onchange="validateEmail();" label="email">
+                </p:inputText>
+                <p:messages id="emailMsg" for="email"/>
 
-               <p:outputLabel value="Nombre:"/>
-               <p:inputText id="nombre" value="#{usuarioController.registrarUsuario.nombre}" required="true"
-                            label="Nombre" >
-               <p:ajax event="keyup" update="nombreMsg"/>
-               </p:inputText>
-               <p:messages id="nombreMsg" for="nombre"/>
+                <p:outputLabel value="Nombre:"/>
+                <p:inputText id="nombre" value="#{usuarioController.registrarUsuario.nombre}" required="true"
+                             label="Nombre" >
+                    <p:ajax event="keyup" update="nombreMsg"/>
+                </p:inputText>
+                <p:messages id="nombreMsg" for="nombre"/>
 
-              <p:outputLabel value="Apellido:"/>
-              <p:inputText id="apellido" value="#{usuarioController.registrarUsuario.apellido}"
-                           label="apellido">
-               </p:inputText>
+                <p:outputLabel value="Apellido:"/>
+                <p:inputText id="apellido" value="#{usuarioController.registrarUsuario.apellido}"
+                             label="apellido">
+                </p:inputText>
+                <p:separator/>
 
-               <p:outputLabel value="Telefono:"/>
-               <p:inputText id="telefono" value="#{usuarioController.registrarUsuario.telefono}"
-                            label="telefono">
-               </p:inputText>
+                <p:outputLabel value="Telefono:"/>
+                <p:inputText id="telefono" value="#{usuarioController.registrarUsuario.telefono}"
+                             label="telefono">
+                </p:inputText>
 
-              <p:outputLabel value=""/>
-              <p:commandButton action="#{usuarioController.Registrar}" value="Registrar" update="registroForm"/>
+                <p:outputLabel value=""/>
+                <p:commandButton action="#{usuarioController.Registrar}" value="Registrar" update="registroForm"/>
 
-           </h:panelGrid>
-           </p:panel>
-       </h:form>
-</body>
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+    </body>
 </f:view>
 </html>
