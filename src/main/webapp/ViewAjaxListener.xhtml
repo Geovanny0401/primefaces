@@ -6,12 +6,26 @@
                 template="/templates/masterTemplate.xhtml">
 
     <ui:define name="bodyContent">
-        <h:form id="registroFrm">
+        <h:form id="registroForm">
             <p:panel header="Registro Usuario">
                 <p:messages/>
                 <p:panelGrid columns="3">
                     <p:outputLabel value="Usuario:*"/>
+                    <p:inputText id="usuario" value="#{usuarioController.registrarUsuario.usuario}"
+                    required="true" label="Usuario">
+                    <p:ajax event="keyup" listener="#{usuarioController.checkUsuarioNombreExists()}" update="usuarioMsg"/>
+                    </p:inputText>
+                    <p:messages id="usuarioMsg" for="usuario"/>
                     <p:outputLabel value="Clave:*"/>
+                    <p:password id="clave" value="#{usuarioController.registrarUsuario.clave}"
+                                required="true" label="Clave" />
+                    <p:messages id="claveMsg" for="clave"/>
+                    <p:outputLabel value="Primer Nombre:*"/>
+                    <p:inputText id="priNombre" value="#{usuarioController.registrarUsuario.nombre}"
+                                 required="true" label="PriNombre"/>
+                    <p:messages id="priNombreMsg" for="priNombre"/>
+                    <p:commandButton action="#{usuarioController.Registrar}" value="Registrar"
+                                     update="registroForm"/>
 
                 </p:panelGrid>
             </p:panel>

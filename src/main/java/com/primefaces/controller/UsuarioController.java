@@ -82,12 +82,12 @@ public class UsuarioController {
 
         public String Registrar()
         {
-            System.out.println("Registrar usuario : " + this.registrarUsuario);
+            logger.info("Registando Usuario :"+ this.registrarUsuario);
             String msg = "Usuario registrado Sastifactoriamente";
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,msg,msg));
             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-            return "Registro.jsf?faces-redirect=true";
+            return null;
         }
 
         public String Login()
