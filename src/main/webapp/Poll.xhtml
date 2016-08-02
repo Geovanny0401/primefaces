@@ -1,12 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Title</title>
-</head>
-<body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/masterTemplate.xhtml">
+<ui:define name="bodyContent">
+    <h:form id="pollfrm1">
+        <p:outputLabel value="Tiempo: "/>
+        <p:outputLabel id="tiempo" value="#{serverTimeBean.time}"/>
+        <p:poll interval="1" listener="#{serverTimeBean.updateTime()}" update="tiempo"/>
 
-</body>
-</html>
+    </h:form>
+
+    <h:form id="pollfrm2">
+        <h2>Start y Stop</h2>
+        <p:outputLabel value="Tiempo: "/>
+        <p:outputLabel id="tiempo1" value="#{serverTimeBean.time}"/>
+        <p:poll interval="1" listener="#{serverTimeBean.updateTime()}" update="tiempo1"
+                widgetVar="currentTimePoller" autoStart="false"/> <br/>
+        <p:button value="Start" onclick="currentTimePoller.start()"  href="#" />
+        <p:button value="Stop" onclick="currentTimePoller.stop()" href="#"/><br/>
+    </h:form>
+</ui:define>
+</ui:composition>

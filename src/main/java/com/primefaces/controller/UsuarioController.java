@@ -72,6 +72,22 @@ public class UsuarioController {
         }
     }
 
+    public void checkEmailExists()
+    {
+        String email= this.registrarUsuario.getEmail();
+        if("admin@gmail.com".equals(email) || "test@gmail.com".equals(email))
+        {
+            String msg="Email ["+email+"] ya se encuentra registrado";
+            FacesContext.getCurrentInstance().addMessage("registroForm:email",
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR,msg,msg));
+        }else {
+            String msg = "Email ["+email+"] is available.";
+            FacesContext.getCurrentInstance().addMessage("registroForm:email",
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
+        }
+    }
+
+
         public Usuario getRegistrarUsuario() {
             return registrarUsuario;
         }
@@ -82,7 +98,7 @@ public class UsuarioController {
 
         public String Registrar()
         {
-            logger.info("Registando Usuario :"+ this.registrarUsuario);
+            logger.info("Registrando Usuario :"+ this.registrarUsuario);
             String msg = "Usuario registrado Sastifactoriamente";
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,msg,msg));
